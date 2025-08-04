@@ -1,7 +1,5 @@
 package org.glavo.imagefx.apng.reader;
 
-import org.glavo.imagefx.apng.util.IoHelper;
-
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -103,6 +101,6 @@ public class PngAtOnceSource implements PngSource {
     }
 
     public static PngAtOnceSource from(InputStream is) throws IOException {
-        return new PngAtOnceSource(IoHelper.toByteArray(is));
+        return new PngAtOnceSource(is.readAllBytes());
     }
 }
