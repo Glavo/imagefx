@@ -1,6 +1,7 @@
 package org.glavo.imagefx.apng.reader;
 
 //import com.google.common.io.ByteStreams;
+
 import org.glavo.imagefx.apng.PngAnimationType;
 import org.glavo.imagefx.apng.PngChunkCode;
 import org.glavo.imagefx.apng.PngConstants;
@@ -40,7 +41,7 @@ public class DefaultPngChunkReader<ResultT> implements PngChunkReader<ResultT> {
             throw new PngIntegrityException(String.format("Corrupted read (Data length %d)", dataLength));
         }
 
-        switch(code) {
+        switch (code) {
             case PngConstants.IHDR_VALUE:
                 readHeaderChunk(source, dataLength);
                 break;
@@ -218,8 +219,8 @@ public class DefaultPngChunkReader<ResultT> implements PngChunkReader<ResultT> {
                 source.readByte() // blend op
         );
 
-        if (sequence==0) { // We're at the first frame...
-            if (idatCount==0) { // Not seen any IDAT chunks yet
+        if (sequence == 0) { // We're at the first frame...
+            if (idatCount == 0) { // Not seen any IDAT chunks yet
                 // APNG Spec says that when the first fcTL chunk is received *before* the first IDAT chunk
                 // the main image of the PNG becomes the first frame in the animation.
 

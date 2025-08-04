@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Simple processor that skips all chunk content and ignores checksums, with
  * sole objective of building a map of the contents of a PNG file.
  * <p>
- *     WARNING: not sure if this API will remain.
+ * WARNING: not sure if this API will remain.
  * </p>
  */
 public class PngMapReader implements PngReader<PngMap> {

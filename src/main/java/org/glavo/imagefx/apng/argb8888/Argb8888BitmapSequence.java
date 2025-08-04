@@ -18,14 +18,14 @@ import java.util.List;
  * as the intermediate Argb8888Bitmap objects are not required, only one bitmap and
  * the output buffer is required during composition.
  */
-public class Argb8888BitmapSequence {
+public final class Argb8888BitmapSequence {
 
     public final PngHeader header;
     public final Argb8888Bitmap defaultImage;
 
-    protected boolean defaultImageIsSet = false;
-    protected PngAnimationControl animationControl;
-    protected List<Frame> animationFrames;
+    private boolean defaultImageIsSet = false;
+    private PngAnimationControl animationControl;
+    List<Frame> animationFrames;
 
     public Argb8888BitmapSequence(PngHeader header) {
         this.header = header;
@@ -57,8 +57,7 @@ public class Argb8888BitmapSequence {
         return animationFrames;
     }
 
-
-    public static class Frame {
+    public static final class Frame {
         public final PngFrameControl control;
         public final Argb8888Bitmap bitmap;
 

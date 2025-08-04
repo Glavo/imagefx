@@ -19,28 +19,28 @@ public interface PngChunkReader<ResultT> extends PngReader<ResultT> {
 
     /**
      * Process the tRNS chunk.
-     *
+     * <p>
      * From http://www.w3.org/TR/PNG/#11tRNS:
-     *
+     * <p>
      * The tRNS chunk specifies either alpha values that are associated with palette entries (for indexed-colour
      * images) or a single transparent colour (for greyscale and truecolour images). The tRNS chunk contains:
-     *
+     * <p>
      * Colour type 0:
-     *
+     * <p>
      * Grey sample value	2 bytes
-     *
+     * <p>
      * Colour type 2:
-     *
+     * <p>
      * Red sample value	2 bytes
      * Blue sample value	2 bytes
      * Green sample value	2 bytes
-     *
+     * <p>
      * Colour type 3:
-     *
+     * <p>
      * Alpha for palette index 0	1 byte
      * Alpha for palette index 1	1 byte
      * ...etc...	1 byte
-     *
+     * <p>
      * Note that for palette colour types the number of transparency entries may be less than the number of
      * entries in the palette. In that case all missing entries are assumed to be fully opaque.
      *
@@ -51,24 +51,24 @@ public interface PngChunkReader<ResultT> extends PngReader<ResultT> {
 
     /**
      * Process the bKGD chunk.
-     *
+     * <p>
      * From http://www.w3.org/TR/PNG/#11bKGD:
-     *
+     * <p>
      * The bKGD chunk specifies a default background colour to present the image against.
      * If there is any other preferred background, either user-specified or part of a larger
      * page (as in a browser), the bKGD chunk should be ignored. The bKGD chunk contains:
-     *
+     * <p>
      * Colour types 0 and 4
-     *   Greyscale	2 bytes
+     * Greyscale	2 bytes
      * Colour types 2 and 6
-     *   Red	2 bytes
-     *   Green	2 bytes
-     *   Blue	2 bytes
+     * Red	2 bytes
+     * Green	2 bytes
+     * Blue	2 bytes
      * Colour type 3
-     *   Palette index	1 byte
-     *
+     * Palette index	1 byte
+     * <p>
      * For colour type 3 (indexed-colour), the value is the palette index of the colour to be used as background.
-     *
+     * <p>
      * For colour types 0 and 4 (greyscale, greyscale with alpha), the value is the grey level to be used as
      * background in the range 0 to (2bitdepth)-1. For colour types 2 and 6 (truecolour, truecolour with alpha),
      * the values are the colour to be used as background, given as RGB samples in the range 0 to (2bitdepth)-1.
@@ -85,7 +85,7 @@ public interface PngChunkReader<ResultT> extends PngReader<ResultT> {
 
     /**
      * Read the IDAT chunk.
-     *
+     * <p>
      * The default implementation skips the data, deferring to the finishedChunks() method
      * to process the data. Key reasons to do this:
      * <ul>
@@ -95,7 +95,7 @@ public interface PngChunkReader<ResultT> extends PngReader<ResultT> {
      *     <li>This might be an APNG file and the IDAT chunk(s) are to be skipped.</li>
      * </ul>
      *
-     * @param source to read from
+     * @param source     to read from
      * @param dataLength in bytes of the data
      * @throws PngException
      * @throws IOException
@@ -106,7 +106,7 @@ public interface PngChunkReader<ResultT> extends PngReader<ResultT> {
 
     /**
      * Read the fcTL chunk.
-     *
+     * <p>
      * See https://wiki.mozilla.org/APNG_Specification#.60fcTL.60:_The_Frame_Control_Chunk
      *
      * @param source
@@ -121,10 +121,10 @@ public interface PngChunkReader<ResultT> extends PngReader<ResultT> {
     /**
      * Give subclasses the opportunity to process a chunk code that was not recognised.
      *
-     * @param code chunk type as integer.
-     * @param source of PNG data, positioned to read the data bytes.
+     * @param code         chunk type as integer.
+     * @param source       of PNG data, positioned to read the data bytes.
      * @param dataPosition offset from absolute start of bytes that data beings.
-     * @param dataLength of this chunk
+     * @param dataLength   of this chunk
      * @throws IOException
      */
     void readOtherChunk(int code, PngSource source, int dataPosition, int dataLength) throws IOException;

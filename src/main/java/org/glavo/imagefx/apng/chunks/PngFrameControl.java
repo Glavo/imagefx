@@ -64,12 +64,12 @@ public class PngFrameControl {
      * @return number of milliseconds to show this frame for
      */
     public int getDelayMilliseconds() {
-        if (delayDenominator==1000) {
+        if (delayDenominator == 1000) {
             return delayNumerator;
         } else {
             // if denom is 100 then need to multiple by 10
             float f = 1000 / delayDenominator; // 1000/100 -> 10
-            return (int)(delayNumerator * f);
+            return (int) (delayNumerator * f);
         }
     }
 

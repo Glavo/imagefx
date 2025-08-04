@@ -22,8 +22,8 @@ public class HexHelper {
 
     public static String columnToRgbHex(Argb8888Bitmap bitmap, int x) {
         StringBuilder sb = new StringBuilder();
-        for (int y=0; y < bitmap.height; y++) {
-            int c = bitmap.array[y*bitmap.width+x];
+        for (int y = 0; y < bitmap.height; y++) {
+            int c = bitmap.array[y * bitmap.width + x];
             sb.append(String.format("%06X\n", c & 0x00ffffff));
             //colourToRgbHex(c, sb);
         }
@@ -36,10 +36,10 @@ public class HexHelper {
 
     public static String columnsToRgbHex(Argb8888Bitmap bitmap, int i, int j) {
         StringBuilder sb = new StringBuilder();
-        for (int y=0; y < bitmap.height; y++) {
+        for (int y = 0; y < bitmap.height; y++) {
             //int c = bitmap.array[y*bitmap.width+x];
             //sb.append(String.format("%06X\n", c & 0x00ffffff));
-            for (int x=i; x<j; x++){
+            for (int x = i; x < j; x++) {
                 int argb = bitmap.array[y * bitmap.width + x];
                 sb.append(String.format("%06X ", argb & 0x00ffffff));
             }
@@ -50,8 +50,8 @@ public class HexHelper {
 
     public static String columnToArgbHex(Argb8888Bitmap bitmap, int x) {
         StringBuilder sb = new StringBuilder();
-        for (int y=0; y < bitmap.height; y++) {
-            int argb = bitmap.array[y*bitmap.width+x];
+        for (int y = 0; y < bitmap.height; y++) {
+            int argb = bitmap.array[y * bitmap.width + x];
             sb.append(String.format("%08X\n", argb));
 
 //            int a=(argb&0xFF000000) >> 24 & 0xff;
@@ -68,8 +68,8 @@ public class HexHelper {
 
     public static String columnsToArgbHex(Argb8888Bitmap bitmap, int i, int j) {
         StringBuilder sb = new StringBuilder();
-        for (int y=0; y < bitmap.height; y++) {
-            for (int x=i; x<j; x++){
+        for (int y = 0; y < bitmap.height; y++) {
+            for (int x = i; x < j; x++) {
 
                 int argb = bitmap.array[y * bitmap.width + x];
                 sb.append(String.format("%08X ", argb));

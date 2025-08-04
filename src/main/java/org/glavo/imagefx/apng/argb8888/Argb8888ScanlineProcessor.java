@@ -6,7 +6,7 @@ import org.glavo.imagefx.apng.reader.BasicScanlineProcessor;
 /**
  * Base implementation that transforms scanlines of source pixels into scanlines of
  * ARGB8888 (32-bit integer) pixels in a destination Argb8888Bitmap object.
- *
+ * <p>
  * Note: I wonder if a better name is ScanlineConverter or PixelTransformer.
  *
  * @see Argb8888Processors
@@ -14,7 +14,7 @@ import org.glavo.imagefx.apng.reader.BasicScanlineProcessor;
 public abstract class Argb8888ScanlineProcessor extends BasicScanlineProcessor {
     protected Argb8888Bitmap bitmap;
     protected Argb8888Palette palette;
-    protected int y=0;
+    protected int y = 0;
 
 //    public Argb8888ScanlineProcessor(PngHeader header) {
 //        this(header.bytesPerRow, new Argb8888Bitmap(header.width, header.height));
@@ -47,12 +47,11 @@ public abstract class Argb8888ScanlineProcessor extends BasicScanlineProcessor {
      * new bitmap for every frame or re-use the bytes in an existing bitmap.
      *
      * @param header of image to use as basis for calculating image size.
-     *
      * @return processor that will write to a new bitmap.
      */
     public Argb8888ScanlineProcessor cloneWithNewBitmap(PngHeader header) {
         Argb8888ScanlineProcessor cloned = clone(header.bytesPerRow, new Argb8888Bitmap(header.width, header.height));
-        if(this.palette != null){
+        if (this.palette != null) {
             cloned.setPalette(new Argb8888Palette(palette.argbArray));
         }
         return cloned;
@@ -64,19 +63,18 @@ public abstract class Argb8888ScanlineProcessor extends BasicScanlineProcessor {
      * new bitmap for every frame or re-use the bytes in an existing bitmap.
      *
      * @param header of image to use as basis for calculating image size.
-     *
      * @return processor that will write to the same bitmap as the current processor.
      */
     public Argb8888ScanlineProcessor cloneWithSharedBitmap(PngHeader header) {
         Argb8888ScanlineProcessor cloned = clone(header.bytesPerRow, bitmap.makeView(header.width, header.height));
-        if(this.palette != null){
+        if (this.palette != null) {
             cloned.setPalette(new Argb8888Palette(palette.argbArray));
         }
         return cloned;
 
     }
 
-//    public Argb8888ScanlineProcessor clone(int bytesPerRow, Argb8888Bitmap bitmap) {
+    //    public Argb8888ScanlineProcessor clone(int bytesPerRow, Argb8888Bitmap bitmap) {
 //        throw new IllegalStateException("TODO: override");
 //    }
     abstract Argb8888ScanlineProcessor clone(int bytesPerRow, Argb8888Bitmap bitmap);

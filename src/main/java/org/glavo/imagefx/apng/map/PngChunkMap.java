@@ -5,7 +5,7 @@ import org.glavo.imagefx.apng.PngChunkCode;
 /**
  * A single chunk from a PNG file is represented by a PngChunkMap.
  * <p>
- *     WARNING: not sure if this API will remain.
+ * WARNING: not sure if this API will remain.
  * </p>
  */
 public class PngChunkMap {
@@ -36,8 +36,6 @@ public class PngChunkMap {
         this.dataPosition = dataPosition;
         this.checksum = checksum;
     }
-
-
 
     @Override
     public String toString() {

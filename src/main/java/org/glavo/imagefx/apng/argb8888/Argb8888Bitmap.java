@@ -6,7 +6,7 @@ package org.glavo.imagefx.apng.argb8888;
  * to be compatible with the input array used to build Android Bitmap objects, though of course
  * its use is not limited to that.
  */
-public class Argb8888Bitmap {
+public final class Argb8888Bitmap {
     public final int[] array;
     public final int width;
     public final int height;

@@ -54,18 +54,18 @@ public class Argb8888Palette {
      * Build a new palette by reading the byte array (from the offset position and for length bytes)
      * as provided in a PLTE chunk.
      *
-     * @param bytes array to read data from
+     * @param bytes    array to read data from
      * @param position offset into bytes array to begin reading from
-     * @param length number of bytes to read from bytes array
+     * @param length   number of bytes to read from bytes array
      * @return new palette formed by reading the bytes array.
      * @throws PngException
      */
     public static Argb8888Palette fromPaletteBytes(byte[] bytes, int position, int length) throws PngException {
         int numColours = length / 3; // guaranteed to be divisible by 3
         int[] argbArray = new int[numColours];
-        int srcIndex= position;
+        int srcIndex = position;
         int alpha = 0xff << 24;
-        for (int destIndex=0; destIndex<numColours; destIndex++) {
+        for (int destIndex = 0; destIndex < numColours; destIndex++) {
             final int r = bytes[srcIndex++] & 0xff;
             final int g = bytes[srcIndex++] & 0xff;
             final int b = bytes[srcIndex++] & 0xff;

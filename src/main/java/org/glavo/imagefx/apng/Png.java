@@ -21,7 +21,7 @@ public class Png {
     /**
      * Read the provided stream and produce a PngMap of the data.
      *
-     * @param is stream to read from
+     * @param is         stream to read from
      * @param sourceName optional name, mainly for debugging.
      * @return PngMap of the data.
      * @throws PngException
@@ -31,15 +31,15 @@ public class Png {
     }
 
     public static PngContainer readContainer(InputStream is) throws PngException {
-        return PngReadHelper.read(is, new DefaultPngChunkReader<PngContainer>(new PngContainerBuilder()));
+        return PngReadHelper.read(is, new DefaultPngChunkReader<>(new PngContainerBuilder()));
     }
 
-    public static<ResultT> ResultT read(InputStream is, PngReader<ResultT> reader) throws PngException {
+    public static <ResultT> ResultT read(InputStream is, PngReader<ResultT> reader) throws PngException {
         return PngReadHelper.read(is, reader);
     }
 
-    public static<ResultT> ResultT read(InputStream is, PngChunkProcessor<ResultT> processor) throws PngException {
-        return PngReadHelper.read(is, new DefaultPngChunkReader<ResultT>(processor));
+    public static <ResultT> ResultT read(InputStream is, PngChunkProcessor<ResultT> processor) throws PngException {
+        return PngReadHelper.read(is, new DefaultPngChunkReader<>(processor));
     }
 
     public static Argb8888Bitmap readArgb8888Bitmap(InputStream is) throws PngException {
